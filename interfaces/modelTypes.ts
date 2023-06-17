@@ -3,6 +3,7 @@ import { Types } from "mongoose";
 export type IUserRole = "seller" | "buyer"
 
 export interface IUser {
+    _id?: Types.ObjectId | undefined | string;
     name: { [key: string]: string };
     phoneNumber: string;
     address: string;

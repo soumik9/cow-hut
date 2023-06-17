@@ -1,11 +1,13 @@
 import express from 'express';
 const router = express.Router();
 
+import authRouter from '../app/routers/authRouter'
+
 const apiRoutes: { path: string, route: any }[] = [
-    // {
-    //     path: '/users',
-    //     route: UserRoutes,
-    // },
+    {
+        path: '/auth',
+        route: authRouter,
+    },
 ];
 
 apiRoutes.forEach(route => router.use(route.path, route.route));

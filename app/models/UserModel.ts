@@ -31,6 +31,7 @@ const userSchema = new Schema<IUser>({
             values: CUserRole,
             message: "Status value can not be {VALUE}, must be seller/buyer"
         },
+        required: [true, 'Role is required']
     },
     budget: {
         type: Number,

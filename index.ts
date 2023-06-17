@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 
 
 // all routes
-app.use('/api', routes);
+app.use('/api/v1', routes);
 
 //global error handler
 app.use(globalErrorHandler);
