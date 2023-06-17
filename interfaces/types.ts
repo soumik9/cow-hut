@@ -1,3 +1,5 @@
+import { SortOrder } from 'mongoose';
+
 export type IErrorMessage = {
     path: string | number;
     message: string;
@@ -19,4 +21,19 @@ export interface IApiReponse<T> {
         total: number;
     };
     data?: T | null;
+};
+
+export interface IPaginationOptions {
+    page?: number;
+    limit?: number;
+    sortBy?: string;
+    sortOrder?: SortOrder;
+};
+
+export interface IPaginationOptionsResult {
+    page: number;
+    limit: number;
+    skip: number;
+    sortBy: string;
+    sortOrder: SortOrder;
 };

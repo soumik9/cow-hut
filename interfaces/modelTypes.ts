@@ -30,5 +30,5 @@ export interface ICow {
     weight: number;
     label: string;
     category: ICowCategory;
-    seller: string | Types.ObjectId | undefined;
+    seller: IUser | Types.ObjectId;
 }
