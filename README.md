@@ -10,9 +10,9 @@ Application Routes:
 ## User
 <hr />
 [GET] - api/v1/users (GET) <br />
-api/v1/users/6177a5b87d32123f08d2f5d4 (Single GET) <br />
-api/v1/users/6177a5b87d32123f08d2f5d4 (PATCH) <br />
-api/v1/users/6177a5b87d32123f08d2f5d4 (DELETE) <br />
+[GET Single] - api/v1/users/6177a5b87d32123f08d2f5d4 <br />
+[PATCH] - api/v1/users/6177a5b87d32123f08d2f5d4 <br />
+[DELETE] - api/v1/users/6177a5b87d32123f08d2f5d4 <br />
 
 ## Cows
 <hr />
