@@ -16,11 +16,11 @@ Application Routes:
 
 ## Cows
 <hr />
-api/v1/cows (POST) <br />
-api/v1/cows (GET) <br />
-api/v1/cows/6177a5b87d32123f08d2f5d4 (Single GET) <br />
-api/v1/cows/6177a5b87d32123f08d2f5d4 (PATCH) <br />
-api/v1/cows/6177a5b87d32123f08d2f5d4 (DELETE) <br />
+[POST] - api/v1/cows <br />
+[GET] - api/v1/cows <br />
+[GET Single] - api/v1/cows/6177a5b87d32123f08d2f5d4 <br />
+[PATCH] - api/v1/cows/6177a5b87d32123f08d2f5d4 (PATCH) <br />
+[DELETE] - api/v1/cows/6177a5b87d32123f08d2f5d4 (DELETE) <br />
 Pagination and Filtering routes of Cows <br />
 api/v1/cows?pag=1&limit=10 <br />
 api/v1/cows?sortBy=price&sortOrder=asc <br />

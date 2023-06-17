@@ -1,26 +1,26 @@
 import { Request, Response, RequestHandler } from 'express';
-import User from '../../models/UserModel';
 import catchAsync from '../../../utils/catchAsync';
 import httpStatus from 'http-status'
 import sendResponse from '../../../utils/SendResponse';
-import { IUser } from '../../../interfaces/modelTypes';
+import { ICow } from '../../../interfaces/modelTypes';
+import Cow from '../../models/CowModel';
 
-const UpdateUser: RequestHandler = catchAsync(
-    async (req: Request, res: Response): Promise<void> => {
+const UpdateCow: RequestHandler = catchAsync(
+    async (req: Request, res: Response) => {
 
         // updating specific user
-        const result = await User.findOneAndUpdate({ _id: req.params.id },
+        const result = await Cow.findOneAndUpdate({ _id: req.params.id },
             req.body,
             { new: true }
         );
 
-        sendResponse<IUser>(res, {
+        sendResponse<ICow>(res, {
             statusCode: httpStatus.OK,
             success: true,
-            message: 'User updated successfully!',
+            message: 'Cow updated successfully!',
             data: result,
         });
     }
 )
 
-export default UpdateUser;
+export default UpdateCow;

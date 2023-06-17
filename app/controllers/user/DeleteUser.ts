@@ -8,7 +8,7 @@ import { IUser } from '../../../interfaces/modelTypes';
 const DeleteUser: RequestHandler = catchAsync(
     async (req: Request, res: Response): Promise<void> => {
 
-        // creating new user
+        // deleting specific user
         const result = await User.findByIdAndDelete(req.params.id);
 
         sendResponse<IUser>(res, {

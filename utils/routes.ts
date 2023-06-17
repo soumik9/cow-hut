@@ -3,6 +3,7 @@ const router = express.Router();
 
 import authRouter from '../app/routers/authRouter'
 import userRouter from '../app/routers/userRouter'
+import cowRouter from '../app/routers/cowRouter'
 
 const apiRoutes: { path: string, route: any }[] = [
     {
@@ -12,6 +13,10 @@ const apiRoutes: { path: string, route: any }[] = [
     {
         path: '/users',
         route: userRouter,
+    },
+    {
+        path: '/cows',
+        route: cowRouter,
     },
 ];
 
