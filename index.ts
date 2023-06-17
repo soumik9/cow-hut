@@ -2,7 +2,8 @@ import express, { Application } from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
 import server from './utils/server'
-// import routes from './utils/routes';
+import routes from './utils/routes';
+import globalErrorHandler from './utils/globalErrorHandler';
 
 require('dotenv').config();
 const app: Application = express();
@@ -15,8 +16,10 @@ app.use(morgan("dev"));
 
 
 // all routes
-// routes(app);
-console.log('hi');
+app.use('/api', routes);
+
+//global error handler
+app.use(globalErrorHandler);
 
 
 // port listening
