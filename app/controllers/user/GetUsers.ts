@@ -5,19 +5,19 @@ import httpStatus from 'http-status'
 import sendResponse from '../../../utils/SendResponse';
 import { IUser } from '../../../interfaces/modelTypes';
 
-const Signup: RequestHandler = catchAsync(
+const GetUsers: RequestHandler = catchAsync(
     async (req: Request, res: Response) => {
 
         // creating new user
-        const result = await User.create(req.body);
+        const result = await User.find();
 
-        sendResponse<IUser>(res, {
+        sendResponse<IUser[]>(res, {
             statusCode: httpStatus.OK,
             success: true,
-            message: 'User created successfully!',
+            message: 'Users retrieved successfully!',
             data: result,
         });
     }
 )
 
-export default Signup;
+export default GetUsers;
