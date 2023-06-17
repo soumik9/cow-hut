@@ -1,0 +1,1 @@
+export const CUserRole: string[] = ['seller', 'buyer']

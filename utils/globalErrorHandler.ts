@@ -20,6 +20,7 @@ const globalErrorHandler: ErrorRequestHandler = (
     if (error?.name === 'ValidationError') {
         const simplifiedError = handleValidationError(error);
         statusCode = simplifiedError.statusCode;
+
         message = simplifiedError.message;
         errorMessages = simplifiedError.errorMessages;
     } else if (error?.name === 'CastError') {
