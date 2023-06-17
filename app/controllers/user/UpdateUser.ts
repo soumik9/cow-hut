@@ -6,7 +6,7 @@ import sendResponse from '../../../utils/SendResponse';
 import { IUser } from '../../../interfaces/modelTypes';
 
 const UpdateUser: RequestHandler = catchAsync(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response): Promise<void> => {
 
         // creating new user
         const result = await User.findOneAndUpdate({ _id: req.params.id },

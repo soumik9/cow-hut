@@ -5,19 +5,19 @@ import httpStatus from 'http-status'
 import sendResponse from '../../../utils/SendResponse';
 import { IUser } from '../../../interfaces/modelTypes';
 
-const GetUser: RequestHandler = catchAsync(
+const DeleteUser: RequestHandler = catchAsync(
     async (req: Request, res: Response): Promise<void> => {
 
         // creating new user
-        const result = await User.findById(req.params.id);
+        const result = await User.findByIdAndDelete(req.params.id);
 
         sendResponse<IUser>(res, {
             statusCode: httpStatus.OK,
             success: true,
-            message: 'User retrieved successfully!',
+            message: 'User deleted successfully!',
             data: result,
         });
     }
 )
 
-export default GetUser;
+export default DeleteUser;
