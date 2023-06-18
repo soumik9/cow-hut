@@ -33,20 +33,20 @@ const CreateOrder: RequestHandler = catchAsync(async (req: Request, res: Respons
         session.startTransaction();
 
         // 1. update cow label to sold out
-        await Cow.findOneAndUpdate({ _id: cow }, { label: CLabel[1] }, { new: true });
+        await Cow.findOneAndUpdate({ _id: cow }, { label: CLabel[1] }, { new: true }).session(session);
 
         if (cowData) {
             // 2. deduct cow cost from buyer's account
             const updatedBudget = buyerData.budget - cowData.price;
-            await User.findOneAndUpdate({ _id: buyer }, { budget: updatedBudget }, { new: true });
+            await User.findOneAndUpdate({ _id: buyer }, { budget: updatedBudget }, { new: true }).session(session);
 
             // 3. add the cow price as income to the seller's account
-            await User.findOneAndUpdate({ _id: cowData.seller }, { $inc: { income: cowData.price } }, { new: true });
+            await User.findOneAndUpdate({ _id: cowData.seller }, { $inc: { income: cowData.price } }, { new: true }).session(session);
         }
 
         // 4. create order data
-        const result = await Order.create(req.body);
-        orderId = result._id;
+        const result = await Order.create([req.body], { session: session });
+        orderId = result[0]._id;
 
         // commit and end the transaction
         await session.commitTransaction();
