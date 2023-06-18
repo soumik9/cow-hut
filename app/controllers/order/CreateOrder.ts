@@ -52,20 +52,22 @@ const CreateOrder: RequestHandler = catchAsync(async (req: Request, res: Respons
         await session.commitTransaction();
         await session.endSession();
     } catch (error) {
-        // if any error occurs, abort the transaction
+        // if any error occurs, abort the transaction and handle the error
         await session.abortTransaction();
         await session.endSession();
         throw error;
     }
 
     // retrieve the populated order data
-    const order = await Order.findById(orderId).populate({
-        path: 'cow',
-        populate: {
-            path: 'seller',
-            model: 'User'
-        }
-    }).populate('buyer');
+    const order = await Order.findById(orderId)
+        .populate({
+            path: 'cow',
+            populate: {
+                path: 'seller',
+                model: 'User',
+            },
+        })
+        .populate('buyer');
 
     sendResponse<IOrder>(res, {
         statusCode: httpStatus.OK,
@@ -74,5 +76,6 @@ const CreateOrder: RequestHandler = catchAsync(async (req: Request, res: Respons
         data: order,
     });
 });
+
 
 export default CreateOrder;

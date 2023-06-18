@@ -9,7 +9,7 @@ const GetCow: RequestHandler = catchAsync(
     async (req: Request, res: Response) => {
 
         // creating new user
-        const result = await Cow.findById(req.params.id);
+        const result = await Cow.findById(req.params.id).populate('seller');
 
         sendResponse<ICow>(res, {
             statusCode: httpStatus.OK,

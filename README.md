@@ -1,6 +1,8 @@
 Live Link: [http://localhost:3000](http://localhost:3000)
 
-Application Routes:
+Cow Hut Routes:
+
+I have also added the POSTMAN json so you can easily hit the routes
 
 ## Auth
 <hr />
