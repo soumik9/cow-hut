@@ -41,17 +41,17 @@ const CreateOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, vo
     try {
         session.startTransaction();
         // 1. update cow label to sold out
-        yield CowModel_1.default.findOneAndUpdate({ _id: cow }, { label: constatnts_1.CLabel[1] }, { new: true });
+        yield CowModel_1.default.findOneAndUpdate({ _id: cow }, { label: constatnts_1.CLabel[1] }, { new: true }).session(session);
         if (cowData) {
             // 2. deduct cow cost from buyer's account
             const updatedBudget = buyerData.budget - cowData.price;
-            yield UserModel_1.default.findOneAndUpdate({ _id: buyer }, { budget: updatedBudget }, { new: true });
+            yield UserModel_1.default.findOneAndUpdate({ _id: buyer }, { budget: updatedBudget }, { new: true }).session(session);
             // 3. add the cow price as income to the seller's account
-            yield UserModel_1.default.findOneAndUpdate({ _id: cowData.seller }, { $inc: { income: cowData.price } }, { new: true });
+            yield UserModel_1.default.findOneAndUpdate({ _id: cowData.seller }, { $inc: { income: cowData.price } }, { new: true }).session(session);
         }
         // 4. create order data
-        const result = yield OrderModel_1.default.create(req.body);
-        orderId = result._id;
+        const result = yield OrderModel_1.default.create([req.body], { session: session });
+        orderId = result[0]._id;
         // commit and end the transaction
         yield session.commitTransaction();
         yield session.endSession();
