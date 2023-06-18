@@ -4,7 +4,7 @@ import httpStatus from 'http-status'
 import sendResponse from '../../../utils/SendResponse';
 import { ICow } from '../../../interfaces/modelTypes';
 import Cow from '../../models/CowModel';
-import { cowFilterableFields, paginationProps } from '../../../utils/constatnts';
+import { cowFilterableFields, cowSearchableFields, paginationProps } from '../../../utils/constatnts';
 import pick from '../../../utils/pick';
 import calculatePagination from '../../../utils/helpers/calculatePagination';
 import { SortOrder } from 'mongoose';
@@ -12,22 +12,44 @@ import { SortOrder } from 'mongoose';
 const GetCows: RequestHandler = catchAsync(
     async (req: Request, res: Response) => {
 
-        // const filters = pick(req.query, cowFilterableFields);
+        const andConditions: any = [];
+        const filters = pick(req.query, cowFilterableFields);
+        const { searchTerm, ...filtersData } = filters;
+
+        // pagination and sorting
         const paginationOptions = pick(req.query, paginationProps);
         const { limit, page, skip, sortBy, sortOrder } = calculatePagination(paginationOptions);
 
-        // const andConditions = [];
-
+        // sorting
         const sortConditions: { [key: string]: SortOrder } = {};
-        // const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
+        if (sortBy && sortOrder) { sortConditions[sortBy] = sortOrder; }
 
-        if (sortBy && sortOrder) {
-            sortConditions[sortBy] = sortOrder;
+        // if there is searching query
+        if (searchTerm) {
+            andConditions.push({
+                $or: cowSearchableFields.map(field => ({
+                    [field]: {
+                        $regex: searchTerm,
+                        $options: 'i',
+                    },
+                })),
+            });
         }
 
+        // if any filterable query make it on object
+        if (Object.keys(filtersData).length) {
+            andConditions.push({
+                $and: Object.entries(filtersData).map(([field, value]) => ({
+                    [field]: value,
+                })),
+            });
+        }
+
+        const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
+        console.log(searchTerm);
+
         // get cows
-        // const result = await Cow.find(whereConditions).sort(sortConditions).skip(skip).limit(limit);
-        const result = await Cow.find().sort(sortConditions).skip(skip).limit(limit);
+        const result = await Cow.find(whereConditions).sort(sortConditions).skip(skip).limit(limit);
         const totalRecords = await Cow.countDocuments();
 
         sendResponse<ICow[]>(res, {
