@@ -14,7 +14,7 @@ const GetCows: RequestHandler = catchAsync(
 
         const andConditions: any = [];
         const filters = pick(req.query, cowFilterableFields);
-        const { searchTerm, ...filtersData } = filters;
+        const { searchTerm, minPrice, maxPrice, ...filtersData } = filters;
 
         // pagination and sorting
         const paginationOptions = pick(req.query, paginationProps);
@@ -45,8 +45,30 @@ const GetCows: RequestHandler = catchAsync(
             });
         }
 
+        // min & max query
+        if (minPrice || maxPrice) {
+
+            const conMinPrice = minPrice ? parseFloat(minPrice) : undefined;
+            const conMaxPrice = maxPrice ? parseFloat(maxPrice) : undefined;
+
+            if (conMinPrice && conMaxPrice) {
+                andConditions.push({
+                    $and: [{ price: { $gte: conMinPrice } }, { price: { $lte: conMaxPrice } }]
+                });
+            } else if (conMaxPrice) {
+                andConditions.push({
+                    $and: [{ price: { $lte: conMaxPrice } }]
+                });
+            } else if (conMinPrice) {
+                andConditions.push({
+                    $and: [{ price: { $gte: conMinPrice } }]
+                });
+            }
+        }
+
+        // finalizing the where condition
         const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
-        console.log(searchTerm);
+        // console.log(whereConditions);
 
         // get cows
         const result = await Cow.find(whereConditions).sort(sortConditions).skip(skip).limit(limit);

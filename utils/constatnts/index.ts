@@ -12,6 +12,6 @@ export const paginationProps: string[] = ['page', 'limit', 'sortBy', 'sortOrder'
 
 
 // filterable fields for cows
-export const cowFilterableFields: string[] = ['searchTerm', 'location', 'age', 'label', 'category'];
+export const cowFilterableFields: string[] = ['searchTerm', 'minPrice', 'maxPrice', 'location', 'age', 'label', 'category'];
 
 export const cowSearchableFields: string[] = ['location', 'breed', 'category'];
