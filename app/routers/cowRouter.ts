@@ -9,7 +9,7 @@ import CreateCow from '../controllers/cow/CreateCow';
 
 //routes
 router.post('/', CreateCow);
-// router.get('/:id', GetCow);
+router.get('/:id', GetCow);
 router.get('/', GetCows);
 router.patch('/:id', UpdateCow);
 router.delete('/:id', DeleteCow);
