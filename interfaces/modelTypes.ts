@@ -32,3 +32,9 @@ export interface ICow {
     category: ICowCategory;
     seller: IUser | Types.ObjectId;
 }
+
+export interface IOrder {
+    _id?: Types.ObjectId | string;
+    cow: ICow | Types.ObjectId;
+    buyer: IUser | Types.ObjectId;
+}

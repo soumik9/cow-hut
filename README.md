@@ -30,5 +30,5 @@ Pagination and Filtering routes of Cows <br />
 
 ## Orders
 <hr />
-[POST] - api/v1/orders (POST) <br />
-[POST] - api/v1/orders (GET) <br />
+[POST] - api/v1/orders <br />
+[GET] - api/v1/orders <br />

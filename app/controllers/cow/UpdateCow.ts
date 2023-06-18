@@ -8,7 +8,7 @@ import Cow from '../../models/CowModel';
 const UpdateCow: RequestHandler = catchAsync(
     async (req: Request, res: Response) => {
 
-        // updating specific user
+        // updating specific cow data
         const result = await Cow.findOneAndUpdate({ _id: req.params.id },
             req.body,
             { new: true }
