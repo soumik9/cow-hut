@@ -18,9 +18,9 @@ Application Routes:
 <hr />
 [POST] - api/v1/cows <br />
 [GET] - api/v1/cows <br />
-[GET Single] - api/v1/cows/6177a5b87d32123f08d2f5d4 <br />
-[PATCH] - api/v1/cows/6177a5b87d32123f08d2f5d4 (PATCH) <br />
-[DELETE] - api/v1/cows/6177a5b87d32123f08d2f5d4 (DELETE) <br /><br />
+[GET Single] - api/v1/cows/648da4e0d1e0a99c8295d2a3 <br />
+[PATCH] - api/v1/cows/648da4e0d1e0a99c8295d2a3 <br />
+[DELETE] - api/v1/cows/648ebc0320969e183ebc3e99 <br /><br />
 Pagination and Filtering routes of Cows <br />
 [GET] - api/v1/cows?page=1&limit=10 <br />
 [GET] - api/v1/cows?sortBy=price&sortOrder=asc <br />
@@ -30,5 +30,5 @@ Pagination and Filtering routes of Cows <br />
 
 ## Orders
 <hr />
-api/v1/orders (POST) <br />
-api/v1/orders (GET) <br />
+[POST] - api/v1/orders (POST) <br />
+[POST] - api/v1/orders (GET) <br />
