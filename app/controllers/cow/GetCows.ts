@@ -48,8 +48,8 @@ const GetCows: RequestHandler = catchAsync(
         // min & max query
         if (minPrice || maxPrice) {
 
-            const conMinPrice = minPrice ? parseFloat(minPrice) : undefined;
-            const conMaxPrice = maxPrice ? parseFloat(maxPrice) : undefined;
+            const conMinPrice = minPrice ? parseFloat(String(minPrice)) : undefined;
+            const conMaxPrice = maxPrice ? parseFloat(String(maxPrice)) : undefined;
 
             if (conMinPrice && conMaxPrice) {
                 andConditions.push({

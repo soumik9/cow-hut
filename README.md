@@ -1,4 +1,4 @@
-Live Link: [http://localhost:3000](http://localhost:3000)
+Live Link: [https://cow-hut-nu.vercel.app/](https://cow-hut-nu.vercel.app/)
 
 Cow Hut Routes:
 

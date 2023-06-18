@@ -1,9 +1,13 @@
-import express, { Application } from 'express'
+import express, { Application, NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
-import server from './utils/server'
+// import server from './utils/server'
 import routes from './utils/routes';
 import globalErrorHandler from './utils/globalErrorHandler';
+import httpStatus from 'http-status';
+import { Server } from 'http';
+import mongoose from 'mongoose';
+import bootstrap from './utils/bootstrap';
 
 require('dotenv').config();
 const app: Application = express();
@@ -14,6 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+// trial route
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello, world!');
+});
 
 // all routes
 app.use('/api/v1', routes);
@@ -21,7 +29,33 @@ app.use('/api/v1', routes);
 //global error handler
 app.use(globalErrorHandler);
 
+//handle not found
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.status(httpStatus.NOT_FOUND).json({
+        success: false,
+        message: 'Not Found',
+        errorMessages: [
+            {
+                path: req.originalUrl,
+                message: 'API Not Found',
+            },
+        ],
+    });
+    next();
+});
 
-// port listening
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
-server(app, port);
+// server related works
+process.on('uncaughtException', error => {
+    console.log('error');
+    process.exit(1);
+});
+
+let server: Server;
+bootstrap(app);
+
+process.on('SIGTERM', () => {
+    console.log('SIGTERM is received');
+    if (server) {
+        server.close();
+    }
+});

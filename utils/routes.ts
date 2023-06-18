@@ -1,10 +1,11 @@
 import express from 'express';
-const router = express.Router();
 
 import authRouter from '../app/routers/authRouter'
 import userRouter from '../app/routers/userRouter'
 import cowRouter from '../app/routers/cowRouter'
 import orderRouter from '../app/routers/orderRouter'
+
+const router = express.Router();
 
 const apiRoutes: { path: string, route: any }[] = [
     {
