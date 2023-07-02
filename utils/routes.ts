@@ -4,10 +4,7 @@ import authRouter from '../app/routers/authRouter'
 import userRouter from '../app/routers/userRouter'
 import cowRouter from '../app/routers/cowRouter'
 import orderRouter from '../app/routers/orderRouter'
-<<<<<<< HEAD
 import adminRouter from '../app/routers/adminRouter'
-=======
->>>>>>> 63b58fbbaa787e388ac58a55285794cb40e6a486
 
 const router = express.Router();
 
@@ -17,13 +14,10 @@ const apiRoutes: { path: string, route: any }[] = [
         route: authRouter,
     },
     {
-<<<<<<< HEAD
         path: '/admins',
         route: adminRouter,
     },
     {
-=======
->>>>>>> 63b58fbbaa787e388ac58a55285794cb40e6a486
         path: '/users',
         route: userRouter,
     },
