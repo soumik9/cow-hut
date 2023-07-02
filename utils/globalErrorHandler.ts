@@ -4,8 +4,11 @@ import ApiError from './errors/ApiError';
 import { IErrorMessage } from '../interfaces/types';
 import handleValidationError from './errors/handleValidationError';
 import handleCastError from './errors/handleCastError';
+<<<<<<< HEAD
 import handleZodError from './errors/handleZodValidation';
 import { ZodError } from 'zod';
+=======
+>>>>>>> 63b58fbbaa787e388ac58a55285794cb40e6a486
 
 
 const globalErrorHandler: ErrorRequestHandler = (
@@ -25,11 +28,14 @@ const globalErrorHandler: ErrorRequestHandler = (
 
         message = simplifiedError.message;
         errorMessages = simplifiedError.errorMessages;
+<<<<<<< HEAD
     } else if (error instanceof ZodError) {
         const simplifiedError = handleZodError(error);
         statusCode = simplifiedError.statusCode;
         message = simplifiedError.message;
         errorMessages = simplifiedError.errorMessages;
+=======
+>>>>>>> 63b58fbbaa787e388ac58a55285794cb40e6a486
     } else if (error?.name === 'CastError') {
         const simplifiedError = handleCastError(error);
         statusCode = simplifiedError.statusCode;

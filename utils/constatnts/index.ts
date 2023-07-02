@@ -14,8 +14,12 @@ export const paginationProps: string[] = ['page', 'limit', 'sortBy', 'sortOrder'
 // filterable fields for cows
 export const cowFilterableFields: string[] = ['searchTerm', 'minPrice', 'maxPrice', 'location', 'age', 'label', 'category'];
 
+<<<<<<< HEAD
 export const cowSearchableFields: string[] = ['location', 'breed', 'category'];
 
 export const CON_ADMIN_ROLE: string = 'admin'
 export const CON_SELLER_ROLE: string = 'seller'
 export const CON_BUYER_ROLE: string = 'buyer'
+=======
+export const cowSearchableFields: string[] = ['location', 'breed', 'category'];
+>>>>>>> 63b58fbbaa787e388ac58a55285794cb40e6a486
