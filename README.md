@@ -10,7 +10,6 @@ I have also added the POSTMAN json so you can easily hit the routes
 [POST] - <a>https://cow-hut-auth-ochre.vercel.app/api/v1/auth/login</a> 
 [POST] - <a>https://cow-hut-auth-ochre.vercel.app/api/v1/auth/refresh-token</a> 
 
-
 ## Auth (Admin)
 <hr />
 [POST] - <a>https://cow-hut-auth-ochre.vercel.app/api/v1/admins/create-admin</a> 
