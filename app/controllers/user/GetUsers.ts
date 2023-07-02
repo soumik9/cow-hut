@@ -1,0 +1,23 @@
+import { Request, Response, RequestHandler } from 'express';
+import User from '../../models/UserModel';
+import catchAsync from '../../../utils/catchAsync';
+import httpStatus from 'http-status'
+import sendResponse from '../../../utils/SendResponse';
+import { IUser } from '../../../interfaces/modelTypes';
+
+const GetUsers: RequestHandler = catchAsync(
+    async (req: Request, res: Response): Promise<void> => {
+
+        // creating new user
+        const result = await User.find();
+
+        sendResponse<IUser[]>(res, {
+            statusCode: httpStatus.OK,
+            success: true,
+            message: 'Users retrieved successfully!',
+            data: result,
+        });
+    }
+)
+
+export default GetUsers;
