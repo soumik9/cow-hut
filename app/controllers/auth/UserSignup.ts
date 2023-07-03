@@ -7,7 +7,7 @@ import { IUser } from '../../../interfaces/modelTypes';
 import { CUserRole } from '../../../utils/constatnts';
 import ApiError from '../../../utils/errors/ApiError';
 
-const Signup: RequestHandler = catchAsync(
+const UserSignup: RequestHandler = catchAsync(
     async (req: Request, res: Response) => {
 
         // if requested role is buyer
@@ -16,8 +16,6 @@ const Signup: RequestHandler = catchAsync(
                 throw new ApiError(httpStatus.BAD_REQUEST, 'Please give your budget amount / above 0!')
             }
         }
-
-        // if role is seller income and budget default 0
 
         // creating new user
         const result = await User.create(req.body);
@@ -31,4 +29,4 @@ const Signup: RequestHandler = catchAsync(
     }
 )
 
-export default Signup;
+export default UserSignup;
