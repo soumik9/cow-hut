@@ -68,4 +68,4 @@ Pagination and Filtering routes of Cows <br />
 ## Order:
 <hr />
 
-[GET] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders/](https://cow-hut-auth-ochre.vercel.app/api/v1/orders/) [Specific Buyer, Specific Seller access]
+[GET] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders/648ecf4b8ae9e3eeb3e6a411](https://cow-hut-auth-ochre.vercel.app/api/v1/orders/648ecf4b8ae9e3eeb3e6a411) [Specific Buyer, Specific Seller access]
