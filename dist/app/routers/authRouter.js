@@ -10,9 +10,9 @@ const RefreshTokenValidation_1 = __importDefault(require("../validations/Refresh
 const RefreshToken_1 = __importDefault(require("../controllers/auth/RefreshToken"));
 const AdminLoginValidation_1 = __importDefault(require("../validations/AdminLoginValidation"));
 const LoginUser_1 = __importDefault(require("../controllers/auth/LoginUser"));
-const Signup_1 = __importDefault(require("../controllers/auth/Signup"));
+const UserSignup_1 = __importDefault(require("../controllers/auth/UserSignup"));
 //routes
-router.post('/signup', Signup_1.default);
+router.post('/signup', UserSignup_1.default);
 router.post('/login', (0, validateZodReq_1.default)(AdminLoginValidation_1.default), LoginUser_1.default);
 router.post('/refresh-token', (0, validateZodReq_1.default)(RefreshTokenValidation_1.default), RefreshToken_1.default);
 exports.default = router;

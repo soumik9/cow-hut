@@ -11,9 +11,13 @@ const UpdateUser_1 = __importDefault(require("../controllers/user/UpdateUser"));
 const DeleteUser_1 = __importDefault(require("../controllers/user/DeleteUser"));
 const auth_1 = __importDefault(require("../middlewares/auth"));
 const constatnts_1 = require("../../utils/constatnts");
+const MyProfile_1 = __importDefault(require("../controllers/user/MyProfile"));
+const UpdateProfile_1 = __importDefault(require("../controllers/user/UpdateProfile"));
 //routes
+router.get('/my-profile', (0, auth_1.default)(constatnts_1.CON_BUYER_ROLE, constatnts_1.CON_SELLER_ROLE), MyProfile_1.default);
 router.get('/:id', (0, auth_1.default)(constatnts_1.CON_ADMIN_ROLE), GetUser_1.default);
 router.get('/', (0, auth_1.default)(constatnts_1.CON_ADMIN_ROLE), GetUsers_1.default);
+router.patch('/my-profile', (0, auth_1.default)(constatnts_1.CON_BUYER_ROLE, constatnts_1.CON_SELLER_ROLE), UpdateProfile_1.default);
 router.patch('/:id', (0, auth_1.default)(constatnts_1.CON_ADMIN_ROLE), UpdateUser_1.default);
 router.delete('/:id', (0, auth_1.default)(constatnts_1.CON_ADMIN_ROLE), DeleteUser_1.default);
 exports.default = router;
