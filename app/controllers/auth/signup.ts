@@ -12,13 +12,10 @@ const Signup: RequestHandler = catchAsync(
 
         // if requested role is buyer
         if (req.body.role === CUserRole[1]) {
-            console.log('hit');
             if (!req.body.budget || req.body.budget === 0) {
                 throw new ApiError(httpStatus.BAD_REQUEST, 'Please give your budget amount / above 0!')
             }
         }
-
-        // if role is seller income and budget default 0
 
         // creating new user
         const result = await User.create(req.body);
