@@ -9,7 +9,7 @@ import GetOrder from '../controllers/order/GetOrder';
 
 //routes
 router.post('/', auth(CON_BUYER_ROLE), CreateOrder);
-router.get('/:id', GetOrder);
+router.get('/:id', auth(CON_BUYER_ROLE, CON_SELLER_ROLE, CON_ADMIN_ROLE), GetOrder);
 router.get('/', auth(CON_BUYER_ROLE, CON_SELLER_ROLE, CON_ADMIN_ROLE), GetOrders);
 
 
