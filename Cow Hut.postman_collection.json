@@ -34,6 +34,49 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Logiin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\": \"0167828888\",\r\n    \"password\": \"abcabc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/login",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}auth/refresh-token",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -44,7 +87,13 @@
 					"name": "Get All Users",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDlmMWJkNzkyNzUxNDVmNzM3MDJmNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODgzMjA1MDYsImV4cCI6MTY4ODQwNjkwNn0.aKzexxGhJff515s-xF3yl4nLHeO67SAM67qMR4jUcEA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{URL}}users",
 							"host": [
@@ -58,7 +107,13 @@
 					"name": "Get a Single User",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDlmMWJkNzkyNzUxNDVmNzM3MDJmNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODgzNzI1OTEsImV4cCI6MTY4ODQ1ODk5MX0.uCx7IXQ26MxoDLzNyxcMkhsgS4TvvgxRFGy0phJpVao",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{URL}}/users/648d4d6c4b51c07888083a10",
 							"host": [
@@ -76,10 +131,16 @@
 					"name": "Update a Single User",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDlmMWJkNzkyNzUxNDVmNzM3MDJmNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODgzNzI1OTEsImV4cCI6MTY4ODQ1ODk5MX0.uCx7IXQ26MxoDLzNyxcMkhsgS4TvvgxRFGy0phJpVao",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"budget\": 9000\r\n}",
+							"raw": "{\r\n    \"budget\": 2500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -116,6 +177,61 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "My Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDhlYmYxMjI4NWY1NmM4ZjQ3OGRjMjUiLCJyb2xlIjoiYnV5ZXIiLCJpYXQiOjE2ODgzNzUyMDksImV4cCI6MTY4ODQ2MTYwOX0.KXIS_e19Au-V_qU_4k4lBU21kxq6nOXMnvS7GC_qG5E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}users/my-profile",
+							"host": [
+								"{{URL}}users"
+							],
+							"path": [
+								"my-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDhkNGQ2YzRiNTFjMDc4ODgwODNhMTAiLCJyb2xlIjoic2VsbGVyIiwiaWF0IjoxNjg4MzcyMzI5LCJleHAiOjE2ODg0NTg3Mjl9.SuPHRRBBHYKJDLoew0spJ5Y5SnB9Ar9l5cWX8drZfck",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"abcabc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}users/my-profile",
+							"host": [
+								"{{URL}}users"
+							],
+							"path": [
+								"my-profile"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -126,10 +242,16 @@
 					"name": "Create a New Cow",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDhkNGQ2YzRiNTFjMDc4ODgwODNhMTAiLCJyb2xlIjoic2VsbGVyIiwiaWF0IjoxNjg4Mzc0MzY3LCJleHAiOjE2ODg0NjA3Njd9.SIbCS0-0lx6tWyyoKA24iMRshhSIfIWRCkzluVKkZ8E",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Deleted Cow\",\r\n    \"age\": 4,\r\n    \"price\": 7500,\r\n    \"location\": \"Rangpur\",\r\n    \"breed\": \"Brahman\",\r\n    \"weight\": 480,\r\n    \"label\": \"for sale\",\r\n    \"category\": \"Beef\",\r\n    \"seller\": \"648d4d6c4b51c07888083a10\"\r\n}",
+							"raw": "{\r\n    \"name\": \"American Cow\",\r\n    \"age\": 4,\r\n    \"price\": 2500,\r\n    \"location\": \"Rangpur\",\r\n    \"breed\": \"Brahman\",\r\n    \"weight\": 480,\r\n    \"label\": \"for sale\",\r\n    \"category\": \"Beef\",\r\n    \"seller\": \"648ebf26285f56c8f478dc27\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -340,10 +462,16 @@
 					"name": "Create a order",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDhlYmYxMjI4NWY1NmM4ZjQ3OGRjMjUiLCJyb2xlIjoiYnV5ZXIiLCJpYXQiOjE2ODgzNzUyMDksImV4cCI6MTY4ODQ2MTYwOX0.KXIS_e19Au-V_qU_4k4lBU21kxq6nOXMnvS7GC_qG5E",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"buyer\": \"648ebf12285f56c8f478dc25\",\r\n    \"cow\": \"648da4e0d1e0a99c8295d2a3\"\r\n}",
+							"raw": "{\r\n    \"buyer\": \"648ebf12285f56c8f478dc25\",\r\n    \"cow\": \"64a28f7c181385d292811ae2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -366,7 +494,13 @@
 					"name": "Get all orders",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDlmMWJkNzkyNzUxNDVmNzM3MDJmNjkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODgzNzI1OTEsImV4cCI6MTY4ODQ1ODk5MX0.uCx7IXQ26MxoDLzNyxcMkhsgS4TvvgxRFGy0phJpVao",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{URL}}/orders",
 							"host": [
@@ -374,6 +508,88 @@
 							],
 							"path": [
 								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDhlYmYxMjI4NWY1NmM4ZjQ3OGRjMjUiLCJyb2xlIjoiYnV5ZXIiLCJpYXQiOjE2ODgzNzUyMDksImV4cCI6MTY4ODQ2MTYwOX0.KXIS_e19Au-V_qU_4k4lBU21kxq6nOXMnvS7GC_qG5E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/orders/648ed86e6cd7b1f1ddbefc97",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"648ed86e6cd7b1f1ddbefc97"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"abcabc\",\r\n    \"role\": \"admin\",\r\n    \"phoneNumber\": \"01689201379\",\r\n    \"address\": \"Naogaon\",\r\n    \"name\": {\r\n        \"firstName\": \"Mr. Tanvir\",\r\n        \"lastName\": \"Bhai\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}admins/create-admin",
+							"host": [
+								"{{URL}}admins"
+							],
+							"path": [
+								"create-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\": \"01689201370\",\r\n    \"password\": \"abcabc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/admins/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admins",
+								"login"
 							]
 						}
 					},
