@@ -6,11 +6,16 @@ import GetUser from '../controllers/user/GetUser';
 import UpdateUser from '../controllers/user/UpdateUser';
 import DeleteUser from '../controllers/user/DeleteUser';
 import auth from '../middlewares/auth';
-import { CON_ADMIN_ROLE } from '../../utils/constatnts';
+import { CON_ADMIN_ROLE, CON_BUYER_ROLE, CON_SELLER_ROLE } from '../../utils/constatnts';
+import MyProfile from '../controllers/user/MyProfile';
 
 //routes
+router.get('/my-profile', auth(CON_BUYER_ROLE, CON_SELLER_ROLE), MyProfile);
+
 router.get('/:id', auth(CON_ADMIN_ROLE), GetUser);
+
 router.get('/', auth(CON_ADMIN_ROLE), GetUsers);
+
 router.patch('/:id', auth(CON_ADMIN_ROLE), UpdateUser);
 router.delete('/:id', auth(CON_ADMIN_ROLE), DeleteUser);
 

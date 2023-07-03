@@ -44,5 +44,28 @@ Pagination and Filtering routes of Cows <br />
 ## Orders
 <hr />
 
-[POST] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders](https://cow-hut-auth-ochre.vercel.app/api/v1/orders) <br /> <br />
-[GET] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders](https://cow-hut-auth-ochre.vercel.app/api/v1/orders) <br />
+[POST] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders](https://cow-hut-auth-ochre.vercel.app/api/v1/orders) [Buyer access] <br /> <br />
+[GET] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders](https://cow-hut-auth-ochre.vercel.app/api/v1/orders) [Admin, Specific Seller,Specific Buyer access] <br />
+
+
+## Bonus Part
+<hr />
+
+[POST] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders](https://cow-hut-auth-ochre.vercel.app/api/v1/orders) [Buyer access] <br /> <br />
+[GET] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders](https://cow-hut-auth-ochre.vercel.app/api/v1/orders) [Admin, Specific Seller,Specific Buyer access] <br /> <br />
+
+### Admin
+<hr />
+
+[POST] - [https://cow-hut-auth-ochre.vercel.app/api/v1/admins/create-admin](https://cow-hut-auth-ochre.vercel.app/api/v1/admins/create-admin) <br /> <br />
+
+## My Profile
+<hr />
+
+[GET] - [https://cow-hut-auth-ochre.vercel.app/api/v1/users/my-profile](https://cow-hut-auth-ochre.vercel.app/api/v1/users/my-profile) [Buyer, Seller access]
+[PATCH] - [https://cow-hut-auth-ochre.vercel.app/api/v1/users/my-profile](https://cow-hut-auth-ochre.vercel.app/api/v1/users/my-profile) [Buyer, Seller access]
+
+## Order:
+<hr />
+
+[GET] - [https://cow-hut-auth-ochre.vercel.app/api/v1/orders/](https://cow-hut-auth-ochre.vercel.app/api/v1/orders/) [Specific Buyer, Specific Seller access]
